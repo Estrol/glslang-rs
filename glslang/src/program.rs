@@ -51,7 +51,7 @@ impl<'a> Program<'a> {
     /// Link the program without compiling to SPIR-V.
     ///
     /// A [`Program`](crate::Program) can only be linked once.
-    pub fn link(self) -> Result<self, GlslangError> {
+    pub fn link(self) -> Result<Self, GlslangError> {
         let messages = glslang_sys::glslang_messages_t::DEFAULT
             | glslang_sys::glslang_messages_t::VULKAN_RULES
             | glslang_sys::glslang_messages_t::SPV_RULES;
