@@ -51,7 +51,7 @@ impl<'a> Program<'a> {
     /// Link the program without compiling to SPIR-V.
     ///
     /// A [`Program`](crate::Program) can only be linked once.
-    pub fn link(self) -> Result<(), GlslangError> {
+    pub fn link(&self) -> Result<(), GlslangError> {
         let messages = glslang_sys::glslang_messages_t::DEFAULT
             | glslang_sys::glslang_messages_t::VULKAN_RULES
             | glslang_sys::glslang_messages_t::SPV_RULES;
@@ -65,7 +65,7 @@ impl<'a> Program<'a> {
     /// Compile the given stage to SPIR-V, consuming the program.
     ///
     /// A [`Program`](crate::Program) can not be re-used to compile multiple stages.
-    pub fn compile(self, stage: ShaderStage) -> Result<Vec<u32>, GlslangError> {
+    pub fn compile(&self, stage: ShaderStage) -> Result<Vec<u32>, GlslangError> {
         // If the stage was not previously added to the program, compiling SPIRV ends up segfaulting.
         if !self.cache.contains_key(&stage) {
             return Err(GlslangError::ShaderStageNotFound(stage));
@@ -102,7 +102,7 @@ impl<'a> Program<'a> {
     /// Compile the given stage to SPIR-V, optimizing for size, consuming the program.
     ///
     /// A [`Program`](crate::Program) can not be re-used to compile multiple stages.
-    pub fn compile_size_optimized(self, stage: ShaderStage) -> Result<Vec<u32>, GlslangError> {
+    pub fn compile_size_optimized(&self, stage: ShaderStage) -> Result<Vec<u32>, GlslangError> {
         // If the stage was not previously added to the program, compiling SPIRV ends up segfaulting.
         if !self.cache.contains_key(&stage) {
             return Err(GlslangError::ShaderStageNotFound(stage));
