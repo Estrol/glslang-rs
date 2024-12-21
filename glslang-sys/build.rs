@@ -41,6 +41,7 @@ pub fn main() {
     add_subdirectory(&mut glslang_build, "glslang/GenericCodeGen");
     add_subdirectory(&mut glslang_build, "glslang/HLSL");
     add_subdirectory(&mut glslang_build, "glslang/MachineIndependent");
+    add_subdirectory(&mut glslang_build, "glslang/ResourceLimits");
 
     add_subdirectory(&mut glslang_build, "SPIRV");
 
