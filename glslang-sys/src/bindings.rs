@@ -713,3 +713,18 @@ extern "C" {
 extern "C" {
     pub fn glslang_glsl_resolver_delete(resolver: *mut glslang_resolver_t);
 }
+extern "C" {
+    pub fn glslang_resource() -> *mut glslang_resource_t;
+}
+extern "C" {
+    pub fn glslang_default_resource() -> *const glslang_resource_t;
+}
+extern "C" {
+    pub fn glslang_default_resource_string() -> *const ::std::os::raw::c_char;
+}
+extern "C" {
+    pub fn glslang_decode_resource_limits(
+        resources: *mut glslang_resource_t,
+        config: *mut ::std::os::raw::c_char,
+    );
+}
